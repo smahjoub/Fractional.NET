@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Fractional
+namespace Fractional.Extentions
 {
     public static class StringExtentions
     {
