@@ -185,18 +185,8 @@ namespace Fractional
         private void EvaluateSimpleFractionalExpression(string expression, out long numerator, out long denominator)
         {
             var parts = expression.Split('/');
-
-            if(parts.Length == 2)
-            {
-                numerator = long.Parse(parts[0]);
-                denominator = long.Parse(parts[1]);
-            }
-            else
-            {
-                numerator = long.Parse(parts[0]);
-                denominator = 1;
-            }
-            
+            numerator = long.Parse(parts[0]);
+            denominator = (parts.Length == 2) ? long.Parse(parts[1]) : 1L;
         }
         #endregion
 
