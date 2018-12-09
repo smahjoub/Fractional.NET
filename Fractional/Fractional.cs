@@ -10,6 +10,7 @@ namespace Fractional
     {
         #region private consts
         private const decimal ACCURACY_FACTOR = 0.00005m;
+        private const long MAX = 999999999999999999L;
         #endregion
 
         #region private fields
@@ -118,13 +119,13 @@ namespace Fractional
             if(decimal.Compare(input, 1.0E-19m) < 0)
             {
                 Numerator = decimal.ToInt64(sign);
-                Denominator = 999999999999999999;
+                Denominator = MAX;
                 return;
             }
 
             if (decimal.Compare(input, 1.0E+19m) > 0)
             {
-                Numerator = 999999999999999999 * sign;
+                Numerator = MAX * sign;
                 Denominator = 1;
                 return;
             }
