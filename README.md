@@ -1,7 +1,6 @@
+# Fractional.NET
 
 [![Build Status](https://dev.azure.com/saifeddinemahjoub/saifeddinemahjoub/_apis/build/status/smahjoub.Fractional.NET)](https://dev.azure.com/saifeddinemahjoub/saifeddinemahjoub/_build/latest?definitionId=1)
-
-# Fractional.NET
 
 This is simple .NET Core library for parsing and working with fractinal expressions.
 
