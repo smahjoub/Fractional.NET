@@ -196,7 +196,7 @@ namespace Fractional
             }
             else
             {
-                this.isNaN = true;
+                IsNaN = true;
             }
         }
 
