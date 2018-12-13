@@ -28,7 +28,22 @@ namespace Fractional.Tests
         [InlineData(0, 0, 1)]
         public void ConstructionOfFractionObjectFromDecimal(decimal value, long expectedNumerator, long expectedDenominator)
         {
-            var fractional = new Fractional(value);
+            var fractional = new Fractional(value: value, keepExcat: false);
+
+            Assert.False(fractional.IsNaN);
+            Assert.Equal(expectedDenominator, fractional.Denominator);
+            Assert.Equal(expectedNumerator, fractional.Numerator);
+
+        }
+
+        [Theory]
+        [InlineData(0.756, 756, 1000)]
+        [InlineData(1, 1, 1)]
+        [InlineData(0.33, 33, 100)]
+        [InlineData(-3.456, -3456, 1000)]
+        public void ConstructionOfFractionObjectFromExcactDecimal(decimal value, long expectedNumerator, long expectedDenominator)
+        {
+            var fractional = new Fractional(value: value, keepExcat: true);
 
             Assert.False(fractional.IsNaN);
             Assert.Equal(expectedDenominator, fractional.Denominator);

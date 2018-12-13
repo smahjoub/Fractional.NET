@@ -1,6 +1,7 @@
 ﻿using System;
 using Fractional.Extentions;
 
+
 namespace Fractional
 {
     /// <summary>
@@ -37,15 +38,20 @@ namespace Fractional
         /// <summary>
         /// Build the fractional object from a decimal
         /// </summary>
-        /// <param name="value"></param>
-        public Fractional(decimal value)
+        /// <param name="value">The decimal value</param>
+        /// <param name="keepExcat">Boolean flag that indicates if given value will be converted into approximate fraction</param>
+        public Fractional(decimal value, bool keepExcat)
         {
             numerator = 0;
             denominator = 1;
             isNaN = false;
 
-            EvaluateDecimalValue(value);
+            if (keepExcat == false)
+                ConvertToApproximateFraction(value);
+            else
+                ConvertToExcateFraction(value);
         }
+
 
         /// <summary>
         /// Build the fractional from a given numerator and denominator.
@@ -103,7 +109,18 @@ namespace Fractional
 
         #region private methods
 
-        private void EvaluateDecimalValue(decimal input)
+        private void ConvertToExcateFraction(decimal input)
+        {
+            var sign = (decimal.Compare(input, decimal.Zero) >= 0) ? 1 : -1;
+            var decimalPlaces = input.GetDecimalPlaces();
+            input = Math.Abs(input);
+
+            Denominator = decimal.ToInt64((decimal)Math.Pow(10, decimalPlaces));
+            Numerator = decimal.ToInt64((sign * Math.Truncate(input * Denominator)));
+        }
+
+
+        private void ConvertToApproximateFraction(decimal input)
         {
             var sign = (decimal.Compare(input, decimal.Zero) >= 0) ? 1 : -1;
 
