@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Fractional.Tests
 {
-    public class FractionalTests
+    public class FractionalConstructorsTests
     {
         [Theory]
         [InlineData("7 3/4", 31, 4)]
