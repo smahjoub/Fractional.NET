@@ -146,8 +146,7 @@ namespace Fractional
 
         private void Simplify(long num, long denom)
         {
-            IsNaN = denom == 0;
-            if (!IsNaN)
+            if (denom != 0)
             {
                 var gcd = GCD(Math.Abs(num), Math.Abs(denom));
                 if(gcd <= denom)
@@ -256,6 +255,7 @@ namespace Fractional
                 Denominator = denom;
 
                 IsNaN = Denominator == 0;
+
             }
             else if (fractionalExpr.IsSimpleFractional())
             {
@@ -270,6 +270,8 @@ namespace Fractional
             {
                 IsNaN = true;
             }
+
+            Simplify(Numerator, Denominator);
         }
 
         private void EvaluateSimpleFractionalExpression(string expression, out long numerator, out long denominator)
