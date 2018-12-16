@@ -10,6 +10,8 @@ namespace Fractional.Tests
         [InlineData("7 3/4", 31, 4)]
         [InlineData("-7 3/4", -31, 4)]
         [InlineData("3/4", 3, 4)]
+        [InlineData("12/4", 3, 1)]
+        [InlineData("3/9", 1, 3)]
         [InlineData("4", 4, 1)]
         public void ConstructionOfFractionObjectFromString(string value, long expectedNumerator, long expectedDenominator)
         {
