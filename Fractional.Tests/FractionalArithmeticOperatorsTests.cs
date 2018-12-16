@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Fractional.Tests
 {
-    public class FractionalOperators
+    public class FractionalArithmeticOperatorsTests
     {
         [Theory]
         [InlineData("3/4", "1/2", 5, 4)]
