@@ -60,10 +60,13 @@ namespace Fractional
         /// <param name="denom">The denominator should be different from zero</param>
         public Fractional(long num, long denom)
         {
-            numerator = num;
-            denominator = denom;
-            isNaN = denom == 0;
+            numerator = 0;
+            denominator = 1;
+            isNaN = false;
+
+            Simplify(num, denom);
         }
+
         #endregion
 
         #region propeties
@@ -107,7 +110,76 @@ namespace Fractional
         }
         #endregion
 
+        #region override operators
+        public static Fractional operator +(Fractional f1, Fractional f2)
+        {
+            var commonDenominator = f1.Denominator * f2.Denominator;
+
+            var f1Numerator = f1.Numerator * f2.Denominator;
+            var f2Numerator = f2.Numerator * f1.Denominator;
+
+            return new Fractional(f1Numerator + f2Numerator, commonDenominator);
+        }
+
+        public static Fractional operator -(Fractional f1, Fractional f2)
+        {
+
+            var commonDenominator = f1.Denominator * f2.Denominator;
+
+            var f1Numerator = f1.Numerator * f2.Denominator;
+            var f2Numerator = f2.Numerator * f1.Denominator;
+
+            return new Fractional(f1Numerator - f2Numerator, commonDenominator);
+        }
+
+        public static Fractional operator *(Fractional f1, Fractional f2)
+        {
+            return new Fractional(f1.Numerator * f2.Numerator, f1.Denominator * f2.Denominator);
+        }
+        public static Fractional operator /(Fractional f1, Fractional f2)
+        {
+            return new Fractional(f1.Numerator * f2.Denominator, f1.Denominator * f2.Numerator);
+        }
+        #endregion
+
         #region private methods
+
+        private void Simplify(long num, long denom)
+        {
+            IsNaN = denom == 0;
+            if (!IsNaN)
+            {
+                var gcd = GCD(Math.Abs(num), Math.Abs(denom));
+                if(gcd <= denom)
+                {
+                    Numerator = num / gcd;
+                    Denominator = denom / gcd;
+                }
+                else
+                {
+                    Numerator = num;
+                    Denominator = denom;
+                }
+            }
+            else
+            {
+                Numerator = num;
+                Denominator = denom;
+            }
+        }
+
+        private long GCD(long a, long b)
+        {
+            while (a != 0 && b != 0)
+            {
+                if (a > b)
+                    a %= b;
+                else
+                    b %= a;
+            }
+
+            return a == 0 ? b : a;
+        }
 
         private void ConvertToExcateFraction(decimal input)
         {
