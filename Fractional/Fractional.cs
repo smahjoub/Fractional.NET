@@ -70,7 +70,19 @@ namespace Fractional
         #endregion
 
         #region propeties
+        /// <summary>
+        /// Try to get the actual value of the fraction. Throw NotFiniteNumberException if IsNaN is true.
+        /// </summary>
+        public decimal Value
+        {
+            get
+            {
+                if (IsNaN)
+                    throw new NotFiniteNumberException();
 
+                return (decimal)Numerator / (decimal)Denominator;
+            }
+        }
         /// <summary>
         /// Get the Numerator value.
         /// </summary>
@@ -110,7 +122,7 @@ namespace Fractional
         }
         #endregion
 
-        #region override operators
+        #region override arithmetic operators
         public static Fractional operator +(Fractional f1, Fractional f2)
         {
             var commonDenominator = f1.Denominator * f2.Denominator;
@@ -139,6 +151,28 @@ namespace Fractional
         public static Fractional operator /(Fractional f1, Fractional f2)
         {
             return new Fractional(f1.Numerator * f2.Denominator, f1.Denominator * f2.Numerator);
+        }
+        #endregion
+
+        #region override comparison operators
+        public static bool operator <(Fractional f1, Fractional f2)
+        {
+            return !f1.IsNaN && !f2.IsNaN && decimal.Compare(f1.Value, f2.Value) < 0;
+        }
+
+        public static bool operator >(Fractional f1, Fractional f2)
+        {
+            return !f1.IsNaN && !f2.IsNaN && decimal.Compare(f1.Value, f2.Value) > 0;
+        }
+
+        public static bool operator ==(Fractional f1, Fractional f2)
+        {
+            return !f1.IsNaN && !f2.IsNaN && f1.Numerator == f2.Numerator && f1.Denominator == f2.Denominator;
+        }
+
+        public static bool operator !=(Fractional f1, Fractional f2)
+        {
+            return f1.IsNaN || f2.IsNaN || f1.Numerator != f2.Numerator || f1.Denominator != f2.Denominator;
         }
         #endregion
 
