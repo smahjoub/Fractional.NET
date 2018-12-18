@@ -39,7 +39,7 @@ namespace Fractional
         /// Build the fractional object from a decimal
         /// </summary>
         /// <param name="value">The decimal value</param>
-        /// <param name="keepExcat">Boolean flag that indicates if given value will be converted into approximate fraction</param>
+        /// <param name="keepExcat">Boolean flag that indicates if given value will be converted into nearest fraction</param>
         public Fractional(decimal value, bool keepExcat)
         {
             numerator = 0;
@@ -123,7 +123,64 @@ namespace Fractional
         #endregion
 
         #region override arithmetic operators
+
+        #region addition
+
+        public static Fractional operator +(Fractional f1, string s1)
+        {
+            var f2 = new Fractional(s1);
+
+            return f1 + f2;
+        }
+
+        public static Fractional operator +(Fractional f1, double d)
+        {
+            var d1 = Convert.ToDecimal(d);
+
+            return f1 + d1;
+        }
+
+        public static Fractional operator +(Fractional f1, float f)
+        {
+            var d1 = Convert.ToDecimal(f);
+
+            return f1 + d1;
+        }
+
+        public static Fractional operator +(Fractional f1, long i)
+        {
+            var f2 = new Fractional(i, 1);
+
+            return Addition(f1, f2);
+        }
+
+        public static Fractional operator +(Fractional f1, int i)
+        {
+            var f2 = new Fractional(i, 1);
+
+            return Addition(f1, f2);
+        }
+
+        public static Fractional operator +(Fractional f1, short s)
+        {
+            var f2 = new Fractional(s, 1);
+
+            return Addition(f1, f2);
+        }
+
+        public static Fractional operator +(Fractional f1, decimal d1)
+        {
+            var f2 = new Fractional(d1, false);
+
+            return Addition(f1, f2);
+        }
+
         public static Fractional operator +(Fractional f1, Fractional f2)
+        {
+            return Addition(f1, f2);
+        }
+
+        private static Fractional Addition(Fractional f1, Fractional f2)
         {
             var commonDenominator = f1.Denominator * f2.Denominator;
 
@@ -132,10 +189,67 @@ namespace Fractional
 
             return new Fractional(f1Numerator + f2Numerator, commonDenominator);
         }
+        #endregion
+
+        #region subtraction
+
+        public static Fractional operator -(Fractional f1, string s1)
+        {
+            var f2 = new Fractional(s1);
+
+            return f1 - f2;
+        }
+
+        public static Fractional operator -(Fractional f1, double d)
+        {
+            var d1 = Convert.ToDecimal(d);
+
+            return f1 - d1;
+        }
+
+        public static Fractional operator -(Fractional f1, float f)
+        {
+            var d1 = Convert.ToDecimal(f);
+
+            return f1 - d1;
+        }
+
+        public static Fractional operator -(Fractional f1, long i)
+        {
+            var f2 = new Fractional(i, 1);
+
+            return Subtraction(f1, f2);
+        }
+
+        public static Fractional operator -(Fractional f1, int i)
+        {
+            var f2 = new Fractional(i, 1);
+
+            return Subtraction(f1, f2);
+        }
+
+        public static Fractional operator -(Fractional f1, short s)
+        {
+            var f2 = new Fractional(s, 1);
+
+            return Subtraction(f1, f2);
+        }
+
+        public static Fractional operator -(Fractional f1, decimal d1)
+        {
+            var f2 = new Fractional(d1, false);
+
+            return Subtraction(f1, f2);
+        }
 
         public static Fractional operator -(Fractional f1, Fractional f2)
         {
+            return Subtraction(f1, f2);
+        }
 
+
+        private static Fractional Subtraction(Fractional f1, Fractional f2)
+        {
             var commonDenominator = f1.Denominator * f2.Denominator;
 
             var f1Numerator = f1.Numerator * f2.Denominator;
@@ -143,15 +257,133 @@ namespace Fractional
 
             return new Fractional(f1Numerator - f2Numerator, commonDenominator);
         }
+        #endregion
+
+        #region multiplication
+
+        public static Fractional operator *(Fractional f1, string s1)
+        {
+            var f2 = new Fractional(s1);
+
+            return f1 * f2;
+        }
+
+        public static Fractional operator *(Fractional f1, double d)
+        {
+            var d1 = Convert.ToDecimal(d);
+
+            return f1 * d1;
+        }
+
+        public static Fractional operator *(Fractional f1, float f)
+        {
+            var d1 = Convert.ToDecimal(f);
+
+            return f1 * d1;
+        }
+
+        public static Fractional operator *(Fractional f1, long i)
+        {
+            var f2 = new Fractional(i, 1);
+
+            return Multiplication(f1, f2);
+        }
+
+        public static Fractional operator *(Fractional f1, int i)
+        {
+            var f2 = new Fractional(i, 1);
+
+            return Multiplication(f1, f2);
+        }
+
+        public static Fractional operator *(Fractional f1, short s)
+        {
+            var f2 = new Fractional(s, 1);
+
+            return Multiplication(f1, f2);
+        }
+
+        public static Fractional operator *(Fractional f1, decimal d1)
+        {
+            var f2 = new Fractional(d1, false);
+
+            return Multiplication(f1, f2);
+        }
 
         public static Fractional operator *(Fractional f1, Fractional f2)
         {
+            return Multiplication(f1, f2);
+        }
+
+        private static Fractional Multiplication(Fractional f1, Fractional f2)
+        {
             return new Fractional(f1.Numerator * f2.Numerator, f1.Denominator * f2.Denominator);
         }
+        #endregion
+
+        #region division
+
+        public static Fractional operator /(Fractional f1, string s1)
+        {
+            var f2 = new Fractional(s1);
+
+            return f1 / f2;
+        }
+
+        public static Fractional operator /(Fractional f1, double d)
+        {
+            var d1 = Convert.ToDecimal(d);
+
+            return f1 / d1;
+        }
+
+        public static Fractional operator /(Fractional f1, float f)
+        {
+            var d1 = Convert.ToDecimal(f);
+
+            return f1 / d1;
+        }
+
+        public static Fractional operator /(Fractional f1, long i)
+        {
+            var f2 = new Fractional(i, 1);
+
+            return Division(f1, f2);
+        }
+
+        public static Fractional operator /(Fractional f1, int i)
+        {
+            var f2 = new Fractional(i, 1);
+
+            return Division(f1, f2);
+        }
+
+        public static Fractional operator /(Fractional f1, short s)
+        {
+            var f2 = new Fractional(s, 1);
+
+            return Division(f1, f2);
+        }
+
+        public static Fractional operator /(Fractional f1, decimal d1)
+        {
+            var f2 = new Fractional(d1, false);
+
+            return Division(f1, f2);
+        }
+
+
         public static Fractional operator /(Fractional f1, Fractional f2)
+        {
+            return Division(f1, f2);
+        }
+
+        private static Fractional Division(Fractional f1, Fractional f2)
         {
             return new Fractional(f1.Numerator * f2.Denominator, f1.Denominator * f2.Numerator);
         }
+        #endregion
+
         #endregion
 
         #region override comparison operators
