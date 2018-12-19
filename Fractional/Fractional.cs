@@ -408,6 +408,37 @@ namespace Fractional
         }
         #endregion
 
+        #region override Object methods
+        public override bool Equals(object obj)
+        {
+            if(obj is Fractional)
+            {
+                var f = (Fractional)obj;
+                return f == this;
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
+
+        public override int GetHashCode()
+        {
+            int hash = 13;
+
+            hash = (hash * 7) + Denominator.GetHashCode();
+            hash = (hash * 7) + Numerator.GetHashCode();
+
+            return hash;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+        #endregion
+
         #region private methods
 
         private void Simplify(long num, long denom)
