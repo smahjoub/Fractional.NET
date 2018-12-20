@@ -120,6 +120,40 @@ namespace Fractional
                 isNaN = value;
             }
         }
+
+        /// <summary>
+        /// Return the human readable form of the fraction
+        /// </summary>
+        public string HumanRepresentation
+        {
+            get
+            {
+                if (IsNaN)
+                    throw new NotFiniteNumberException();
+
+                if (Numerator < Denominator)
+                {
+                    if (Numerator == 0)
+                        return "0";
+                    else
+                        return string.Format("{0}/{1}", Numerator, Denominator);
+                } 
+                else if (Numerator == Denominator)
+                {
+                    return "1";
+                }                
+                else if(Denominator == 1)
+                {
+                    return string.Format("{0}", Numerator);
+                }
+                else
+                {
+                    return string.Format("{0} {1}/{2}", numerator / denominator,
+                                    numerator % denominator, denominator);
+                }
+                   
+            }
+        }
         #endregion
 
         #region override arithmetic operators
@@ -464,6 +498,7 @@ namespace Fractional
             }
         }
 
+   
         private long GCD(long a, long b)
         {
             while (a != 0 && b != 0)
