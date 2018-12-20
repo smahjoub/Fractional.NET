@@ -137,12 +137,12 @@ namespace Fractional
                         return "0";
                     else
                         return string.Format("{0}/{1}", Numerator, Denominator);
-                } 
+                }
                 else if (Numerator == Denominator)
                 {
                     return "1";
-                }                
-                else if(Denominator == 1)
+                }
+                else if (Denominator == 1)
                 {
                     return string.Format("{0}", Numerator);
                 }
@@ -151,7 +151,7 @@ namespace Fractional
                     return string.Format("{0} {1}/{2}", numerator / denominator,
                                     numerator % denominator, denominator);
                 }
-                   
+
             }
         }
         #endregion
@@ -445,7 +445,7 @@ namespace Fractional
         #region override Object methods
         public override bool Equals(object obj)
         {
-            if(obj is Fractional)
+            if (obj is Fractional)
             {
                 var f = (Fractional)obj;
                 return f == this;
@@ -454,7 +454,7 @@ namespace Fractional
             {
                 return false;
             }
-            
+
         }
 
         public override int GetHashCode()
@@ -480,7 +480,7 @@ namespace Fractional
             if (denom != 0)
             {
                 var gcd = GCD(Math.Abs(num), Math.Abs(denom));
-                if(gcd <= denom)
+                if (gcd <= denom)
                 {
                     Numerator = num / gcd;
                     Denominator = denom / gcd;
@@ -498,7 +498,7 @@ namespace Fractional
             }
         }
 
-   
+
         private long GCD(long a, long b)
         {
             while (a != 0 && b != 0)
@@ -531,12 +531,12 @@ namespace Fractional
 
             if (input.IsAnInteger())
             {
-                Numerator   = decimal.ToInt64(input * sign);
+                Numerator = decimal.ToInt64(input * sign);
                 Denominator = 1;
                 return;
             }
 
-            if(decimal.Compare(input, 1.0E-19m) < 0)
+            if (decimal.Compare(input, 1.0E-19m) < 0)
             {
                 Numerator = decimal.ToInt64(sign);
                 Denominator = MAX;
@@ -574,7 +574,7 @@ namespace Fractional
         {
             if (fractionalExpr.IsMixedFractional())
             {
-                var parts     = fractionalExpr.Split(' ');
+                var parts = fractionalExpr.Split(' ');
                 var wholePart = long.Parse(parts[0]);
                 var sign = (wholePart >= 0) ? 1 : -1;
                 var fractionalPart = parts[1];
