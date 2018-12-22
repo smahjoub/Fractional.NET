@@ -71,3 +71,15 @@ Console.WriteLine(f1 - 1.75d);   // Output: -1
 Console.WriteLine(f1 - f2);      // Output: 1/4
 
 ```
+
+It does the same work with Comparisons operators
+
+```csharp
+
+var f1 = new Fractional("5 3/2");
+var f2 = new Fractional("3 3/2");
+
+Console.WriteLine(f1 > f2);        // Output: true
+Console.WriteLine(f1 < 7.0d);      // Output: true
+Console.WriteLine(f2 > 5.0d);      // Output: false
+```
