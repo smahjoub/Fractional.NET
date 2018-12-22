@@ -469,7 +469,7 @@ namespace Fractional
 
         public override string ToString()
         {
-            return base.ToString();
+            return this.HumanRepresentation;
         }
         #endregion
 
