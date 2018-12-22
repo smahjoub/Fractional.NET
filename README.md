@@ -14,6 +14,8 @@ From *Fractional.Tests* directory, run `dotnet  test` to execute the unit tests.
 
 # Usage guide
 
+This is a basic guide to show you the main features of the library.
+
 ##  Conversion
 
 Basic conversion operations
@@ -36,8 +38,8 @@ Conversion of decimals without approximate guessing :
 var f1 = new Fractional(0.333333d, keepExcat: true);
 var f2 = new Fractional(0.75d, keepExcat: true);
 
-Console.WriteLine(f1.HumanRepresentation); // Output: 333333/1000000
-Console.WriteLine(f2.HumanRepresentation); // Output: 75/100
+Console.WriteLine(f1); // Output: 333333/1000000
+Console.WriteLine(f2); // Output: 75/100
 ```
 
 ### Conversion to decimal
@@ -51,5 +53,21 @@ var f2 = new Fractional("3/4");
 
 Console.WriteLine(f1.Value); // Output: 7.75
 Console.WriteLine(f2.Value); // Output: 0.75
+
+```
+
+### Arithmetic operations and Comparisons
+
+The fraction instance work very well with math operators even with other numerics and string representations :
+
+```csharp
+
+var f1 = new Fractional("3/4");
+var f2 = new Fractional("1/2");
+
+Console.WriteLine(f1 + 0.5d);    // Output: 1 1/4
+Console.WriteLine(f1 + f2);      // Output: 1 1/4
+Console.WriteLine(f1 - 1.75d);   // Output: -1
+Console.WriteLine(f1 - f2);      // Output: 1/4
 
 ```
