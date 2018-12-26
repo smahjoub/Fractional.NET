@@ -3,6 +3,10 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Saifeddine Mahjoub</Authors>
+    <PackageId>Fractional.NET</PackageId>
+    <Description>This is simple .NET Core library for parsing and working with fractinal expressions.</Description>
+    <Company>smahjoub</Company>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
