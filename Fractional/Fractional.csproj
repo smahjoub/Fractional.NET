@@ -7,6 +7,8 @@
     <PackageId>Fractional.NET</PackageId>
     <Description>This is simple .NET Core library for parsing and working with fractinal expressions.</Description>
     <Company>smahjoub</Company>
+    <PackageProjectUrl></PackageProjectUrl>
+    <RepositoryUrl>https://github.com/smahjoub/Fractional.NET</RepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
