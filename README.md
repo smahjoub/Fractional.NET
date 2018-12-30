@@ -2,6 +2,8 @@
 
 [![Build Status](https://dev.azure.com/saifeddinemahjoub/saifeddinemahjoub/_apis/build/status/smahjoub.Fractional.NET)](https://dev.azure.com/saifeddinemahjoub/saifeddinemahjoub/_build/latest?definitionId=1)
 
+[![](https://img.shields.io/nuget/vpre/Fractional.NET.svg)](https://www.nuget.org/packages/Fractional.NET/1.0.0-beta)
+
 This is simple .NET Core library for parsing and working with fractinal expressions.
 
 ## Build
