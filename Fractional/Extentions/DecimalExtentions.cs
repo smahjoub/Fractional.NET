@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Fractional.Extentions
 {
-    public static class DecimalExtentions
+    internal static class DecimalExtentions
     {
         /// <summary>
         /// Return if the actual decimal is an integer

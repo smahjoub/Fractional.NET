@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace Fractional.Extentions
 {
-    public static class StringExtentions
+    internal static class StringExtentions
     {
         private const string MIXED_FRACTIONAL_PATTERN = @"^(\-?\d+\s+\d+/\d+)?$";
 
