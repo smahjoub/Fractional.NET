@@ -6,9 +6,11 @@ variables:
 
 steps:
 - script: |
+	dotnet tool install coveralls.net --version 1.0.0 --tool-path tools
     dotnet build --configuration $(buildConfiguration)
-    dotnet test Fractional.Tests --configuration $(buildConfiguration) --logger trx
+    dotnet test Fractional.Tests /p:CollectCoverage=true /p:CoverletOutputFormat=opencover --configuration $(buildConfiguration) --logger trx 
     dotnet publish --configuration $(buildConfiguration) --output $BUILD_ARTIFACTSTAGINGDIRECTORY
+
 
 - task: PublishTestResults@2
   condition: succeededOrFailed()
