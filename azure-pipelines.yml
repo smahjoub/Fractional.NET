@@ -8,9 +8,9 @@ steps:
 - script: |
     dotnet build --configuration $(buildConfiguration)
     dotnet tool install coveralls.net --version 1.0.0 --tool-path tools
-    dotnet test Fractional.Tests /p:CollectCoverage=true /p:CoverletOutputFormat=opencover --configuration $(buildConfiguration) --logger trx 
+    dotnet test Fractional.Tests /p:CollectCoverage=true /p:CoverletOutputFormat=opencover --configuration $(buildConfiguration) --logger trx
+    tools/csmacnz.Coveralls --opencover -i Fractional.Tests/coverage.opencover.xml --useRelativePaths --repoToken $(repoToken) 
     dotnet publish --configuration $(buildConfiguration) --output $BUILD_ARTIFACTSTAGINGDIRECTORY
-    tools/csmacnz.Coveralls --opencover -i Fractional.Tests/coverage.opencover.xml --useRelativePaths --repoToken $(repoToken)
 
 
 
