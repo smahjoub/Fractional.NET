@@ -3,13 +3,15 @@ pool:
   
 variables:
   buildConfiguration: 'Release'
-
+  repoToken: '9Te7aqTtiwY6vBLURSnCOqxe4qPKU0xHa'
 steps:
 - script: |
     dotnet build --configuration $(buildConfiguration)
     dotnet tool install coveralls.net --version 1.0.0 --tool-path tools
     dotnet test Fractional.Tests /p:CollectCoverage=true /p:CoverletOutputFormat=opencover --configuration $(buildConfiguration) --logger trx 
     dotnet publish --configuration $(buildConfiguration) --output $BUILD_ARTIFACTSTAGINGDIRECTORY
+    .\tools\csmacnz.Coveralls --opencover -i Fractional.Tests/coverage.opencover.xml --useRelativePaths --repoToken $(repoToken)
+
 
 
 - task: PublishTestResults@2
