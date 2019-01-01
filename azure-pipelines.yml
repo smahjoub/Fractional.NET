@@ -3,7 +3,7 @@ pool:
   
 variables:
   buildConfiguration: 'Release'
-  repoToken: AaydhD4knvQpzCOPPXe7KD63WEIWI2QDO
+  repoToken: 4uuGwc4ERzLlbynPOigsSWrs0Y6e31zIW
 steps:
 - script: |
     dotnet build --configuration $(buildConfiguration)
