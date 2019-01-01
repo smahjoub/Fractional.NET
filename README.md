@@ -1,6 +1,6 @@
 # Fractional.NET
 
-[![Build Status](https://dev.azure.com/saifeddinemahjoub/saifeddinemahjoub/_apis/build/status/smahjoub.Fractional.NET)](https://dev.azure.com/saifeddinemahjoub/saifeddinemahjoub/_build/latest?definitionId=1) [![](https://img.shields.io/nuget/vpre/Fractional.NET.svg)](https://www.nuget.org/packages/Fractional.NET/1.0.0-beta) [![Coverage Status](https://coveralls.io/repos/github/smahjoub/Fractional.NET/badge.svg?branch=)](https://coveralls.io/github/smahjoub/Fractional.NET?branch=) [![](https://img.shields.io/github/license/:user/:Fractional.NET.svg)](https://github.com/smahjoub/Fractional.NET)
+[![Build Status](https://dev.azure.com/saifeddinemahjoub/saifeddinemahjoub/_apis/build/status/smahjoub.Fractional.NET)](https://dev.azure.com/saifeddinemahjoub/saifeddinemahjoub/_build/latest?definitionId=1) [![](https://img.shields.io/nuget/vpre/Fractional.NET.svg)](https://www.nuget.org/packages/Fractional.NET/1.0.0-beta) [![Coverage Status](https://coveralls.io/repos/github/smahjoub/Fractional.NET/badge.svg?branch=)](https://coveralls.io/github/smahjoub/Fractional.NET?branch=) [![](https://img.shields.io/github/license/smahjoub/Fractional.NET.svg)](https://github.com/smahjoub/Fractional.NET)
 
 This is simple .NET Core library for parsing and working with fractinal expressions.
 
