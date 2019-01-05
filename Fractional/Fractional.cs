@@ -20,6 +20,8 @@ namespace Fractional
         private long denominator;
 
         private bool isNaN;
+
+        private bool isApproximate;
         #endregion
 
         #region ctors
@@ -32,6 +34,7 @@ namespace Fractional
             numerator = 0;
             denominator = 1;
             isNaN = false;
+            isApproximate = false;
             EvaluateFractionalExpression(fractional);
         }
 
@@ -45,6 +48,7 @@ namespace Fractional
             numerator = 0;
             denominator = 1;
             isNaN = false;
+            isApproximate = !keepExcat;
 
             if (keepExcat == false)
                 ConvertToApproximateFraction(value);
@@ -63,13 +67,22 @@ namespace Fractional
             numerator = 0;
             denominator = 1;
             isNaN = false;
-
+            isApproximate = false;
             Simplify(num, denom);
         }
 
         #endregion
 
         #region propeties
+
+        /// <summary>
+        /// Get if the current fraction is approximate
+        /// </summary>
+        public bool IsApproximate
+        {
+            get { return isApproximate; }
+        }
+
         /// <summary>
         /// Try to get the actual value of the fraction. Throw NotFiniteNumberException if IsNaN is true.
         /// </summary>
@@ -204,7 +217,7 @@ namespace Fractional
 
         public static Fractional operator +(Fractional f1, decimal d1)
         {
-            var f2 = new Fractional(d1, false);
+            var f2 = new Fractional(d1, !f1.IsApproximate);
 
             return Addition(f1, f2);
         }
@@ -271,7 +284,7 @@ namespace Fractional
 
         public static Fractional operator -(Fractional f1, decimal d1)
         {
-            var f2 = new Fractional(d1, false);
+            var f2 = new Fractional(d1, !f1.IsApproximate);
 
             return Subtraction(f1, f2);
         }
@@ -339,7 +352,7 @@ namespace Fractional
 
         public static Fractional operator *(Fractional f1, decimal d1)
         {
-            var f2 = new Fractional(d1, false);
+            var f2 = new Fractional(d1, !f1.IsApproximate);
 
             return Multiplication(f1, f2);
         }
@@ -401,7 +414,7 @@ namespace Fractional
 
         public static Fractional operator /(Fractional f1, decimal d1)
         {
-            var f2 = new Fractional(d1, false);
+            var f2 = new Fractional(d1, !f1.IsApproximate);
 
             return Division(f1, f2);
         }
