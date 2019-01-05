@@ -10,7 +10,7 @@
     <PackageProjectUrl>https://github.com/smahjoub/Fractional.NET</PackageProjectUrl>
     <RepositoryUrl>https://github.com/smahjoub/Fractional.NET</RepositoryUrl>
     <PackageTags>Math;Fraction</PackageTags>
-    <Version>1.0.0-beta</Version>
+    <Version>1.0.0-alpha</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
