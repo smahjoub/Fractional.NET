@@ -10,7 +10,6 @@
     <PackageProjectUrl>https://github.com/smahjoub/Fractional.NET</PackageProjectUrl>
     <RepositoryUrl>https://github.com/smahjoub/Fractional.NET</RepositoryUrl>
     <PackageTags>Math;Fraction</PackageTags>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/smahjoub/Fractional.NET/master/LICENSE.md</PackageLicenseUrl>
     <Version>1.0.0-beta</Version>
   </PropertyGroup>
 
